@@ -1,0 +1,180 @@
+.todo-task-panel {
+  z-index: 10;
+  min-width: 40%;
+  overflow-y: auto;
+  height: 600px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  &.done{
+    .task-card{
+      background-color: green !important;
+    }
+  }
+  &::-webkit-scrollbar {
+    width: 12px;
+    background: #eaeaea !important;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 5px;
+    border-radius: 20px;
+    background: #a5a5a594 !important;
+  }
+  padding: 1em 1em;
+}
+
+.centralize {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  animation: sDown 1s !important;
+}
+
+@keyframes sDown {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.task-card[draggable="true"] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: center;
+  background-color: #005995;
+  border-radius: 20px;
+  padding: 1.2em 1.2em;
+  cursor: move;
+  margin-bottom: 3em;
+  animation: fade 0.5s linear forwards;
+  span {
+    word-break: break-all;
+    max-width: 90%;
+    margin-left: 10px;
+    color: white;
+  }
+  .delete-todo-task-button, .delete-done-task-button{
+    font-size: 20px;
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    cursor: pointer;
+    color: white;
+    border: transparent;
+    background: transparent;
+  }
+  &:hover {
+    box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.3);
+    transition-duration: 0.6s;
+  }
+}
+
+.task-card:not([draggable]) {
+  margin: 2em auto;
+  animation: fade 0.5s linear forwards;
+  background-color: #5db85d;
+  border-radius: 20px;
+  padding: 1.5em 1.5em;
+  span {
+    margin: 0 auto;
+    color: white;
+  }
+}
+#removeSpan {
+  span[id] {
+    display: none;
+  }
+  .task-card {
+    margin-top: 3em;
+  }
+}
+.cont {
+  background: #eaeaea !important;
+}
+
+.hover-todo-task-panel {
+  opacity: 0.6;
+  transition-duration: 1s;
+}
+
+.invisible {
+  display: none;
+}
+
+#myModal {
+  animation: fade 0.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.cardFadeOut {
+  animation: cardFadeOut 2s;
+}
+
+@keyframes cardFadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    scale: (0);
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 1285px) {
+  .todo-task-panel {
+    overflow-y: auto;
+    height: 1000px;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+      background: #eaeaea !important;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+    &::-webkit-scrollbar-thumb {
+      border: 5px;
+      border-radius: 8px;
+      background: #a5a5a594 !important;
+    }
+  }
+  .task-card[draggable="true"] {
+    width: 270px !important;
+    padding: 0.9em 0.9em;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .task-card[draggable="true"] {
+    width: 230px !important;
+    padding: 0.9em 0.9em;
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  .task-card[draggable="true"] {
+    max-width: 330px !important;
+  }
+}
