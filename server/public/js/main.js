@@ -87,6 +87,10 @@ function createTaskCard(taskName){
   const button = document.createElement("button")
   button.className += "delete-todo-task-button"
   button.textContent = 'x'
+  
+  const buttonEdit = document.createElement("button")
+  buttonEdit.className += "edit-todo-task-button"
+  buttonEdit.textContent = 'E'
 
   const span = document.createElement("span")
   span.textContent = taskName
@@ -95,6 +99,7 @@ function createTaskCard(taskName){
   taskCard.className = "task-card"
   taskCard.setAttribute("draggable", "true")
   taskCard.append(button)
+  taskCard.append(buttonEdit)
   taskCard.append(span)
   return taskCard
 }

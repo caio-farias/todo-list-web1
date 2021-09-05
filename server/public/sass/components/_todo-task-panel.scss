@@ -72,6 +72,16 @@
     border: transparent;
     background: transparent;
   }
+  .edit-todo-task-button {
+    font-size: 20px;
+    position: absolute;
+    right: 35px;
+    top: 0px;
+    cursor: pointer;
+    color: white;
+    border: transparent;
+    background: transparent;
+  }
   &:hover {
     box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.3);
     transition-duration: 0.6s;
