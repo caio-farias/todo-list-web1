@@ -1,25 +1,33 @@
-const { renderPage, provideFile } = require('./fs')
-const data = require('./data.json')
+const express = require('express')
+const routes = express.Router()
+const User = require('./models/user')
 
-module.exports = {
-  router(req, res, url){      
-    if(url.match("\.css$") || url.match("\.js$")){
-      return provideFile(req, res)
-    }
+routes.get('*', (req, res) => {
+  const [_, page] = req.path.split('/')
+  const view = page.length == 0 ? 'welcome' : page
+  const todos = [{
+    id: 1,
+    description: 'test'
+  }]
+  res.render('index', { view: view,  todos: todos })
+})
 
-    switch (url) {
-      case '/':
-        res.writeHead(302, { 'location' : '/welcome'})
-      case '/welcome':
-        renderPage(req, res, 'welcome.html', data)
-        break;
-      case '/app':
-        renderPage(req, res, 'index.html', data)
-        break;
-      default:
-        res.writeHead(404, {"Content-Type": "text/html"})
-        res.end("<h1>Page Not Found.. </h1>")
-        break;
-    }
+routes.post('/register/todo', (req, res) => {
+
+})
+
+routes.post('/register/user', async (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    password: req.body.password,
+    email: req.body.email
+  })
+  try {
+    await user.save
+    res.redirect('/login')
+  } catch (error) {
+    
   }
-}
+})
+
+module.exports = routes

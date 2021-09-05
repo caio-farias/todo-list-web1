@@ -1,17 +1,21 @@
-const http = require('http')
-const { router } = require('./routes')
+const express = require('express')
+require('./db/')
+const routes = require('./routes')
+const corsMiddleware = require('./cors/index')
+const { urlencoded } = require('express')
+const app = express()
+const PORT = 8000
 
-const port = 5555
+app.use(corsMiddleware)
+app.options('*', corsMiddleware)
+app.use(express.urlencoded({ extended: false }))
+app.use(express.static(__dirname + '/assets'))
+app.set('views', __dirname + '/views')
+app.set('view engine', 'ejs')
+app.use((req, res, next) =>{
+  console.log(`>> ${req.method} - ${req.protocol}://${req.get('host')}${req.originalUrl}`)
+  next()
+})
 
-const listener = (req, res) => {
-  if(req.method == 'GET')
-    return router(req, res, req.url)
-  
-  res.writeHead(404, {"Content-Type": "text/html"})
-  res.end("<h1>Page Not Found.. </h1>")
-}
-
-const server = http.createServer(listener)
-
-server.listen(port)
-console.log(">> http://localhost:" + port)
+app.use(routes)
+app.listen(process.env.PORT || PORT)
