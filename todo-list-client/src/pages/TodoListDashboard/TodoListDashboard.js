@@ -90,7 +90,6 @@ const updateUserData = useCallback(
   return(
     <section className="dashboard">
       <section className="mainPanel">
-        <span>Olá, {user != null && user.name}</span>
         <div>
           <TodoListDashboardContext.Provider 
             value={{ 
