@@ -31,33 +31,33 @@ const Register = () => {
   return (
     <>
     <section className="register-page">
-    <div className="register-user-form-wrapper">
-      <form className="register-user-form" onSubmit={submit}>
-        <div className="user-form-field">
-          <label className="user-form-label" htmlFor="name">Nome: </label>
+    <div className="register-form-wrapper">
+      <form className="register-form" onSubmit={submit}>
+        <div className="register-form-field">
+          <label className="register-form-label" htmlFor="name">Nome: </label>
           <input 
             required 
-            className="user-form-input" 
+            className="register-form-input" 
             type="text" 
             name="name"
             onChange={ e => setName(e.target.value)}
             />
         </div>
-        <div className="user-form-field">
-          <label className="user-form-label" htmlFor="password">Senha: </label>
+        <div className="register-form-field">
+          <label className="register-form-label" htmlFor="password">Senha: </label>
           <input 
             required 
-            className="user-form-input" 
+            className="register-form-input" 
             type="password" 
             name="password" 
             onChange={ e => setPassword(e.target.value)}
             />
         </div>
-        <div className="user-form-field">
-          <label className="user-form-label" htmlFor="email">E-mail: </label>
+        <div className="register-form-field">
+          <label className="register-form-label" htmlFor="email">E-mail: </label>
           <input 
             required 
-            className="user-form-input" 
+            className="register-form-input" 
             type="text" 
             name="email" 
             onChange={ e => setEmail(e.target.value)}
@@ -68,7 +68,7 @@ const Register = () => {
               {errorMessage}
             </span> 
           )}
-        <div className="user-form-button-wrapper">
+        <div className="register-form-button-wrapper">
           <a href="/login">Cancelar</a>
           <Button type='submit' modifier='register'>Cadastrar</Button>
         </div>
