@@ -9,6 +9,17 @@
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+  .loading-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    span{
+      font-size: 16px;
+      margin-bottom: 1em;
+    }
+  }
   .login-user-form{
     display: flex;
     flex-direction: column;
