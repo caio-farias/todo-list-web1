@@ -26,6 +26,8 @@
       padding: .25em;
       border-radius: 3px;
       font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
       &:hover{
         background-color: white;
         color:rgb(42,42,46);

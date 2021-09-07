@@ -36,9 +36,13 @@ const Header = () => {
               :(
                 <>
                   {location.pathname !== '/login' ? 
-                    <a href='/login' className="">Logar</a>
+                    <a onClickCapture={() => history.push({
+                      pathname: '/login'
+                    })} className="">Logar</a>
                     : 
-                    <a href='/register' className="">Cadastre-se</a>
+                    <a onClickCapture={() => history.replace({
+                      pathname: '/register'
+                    })} className="">Cadastre-se</a>
                   }
                 </>
               )}
