@@ -6,6 +6,7 @@ import Button, { ReturnButton } from "./Button"
 import TodoTask from './TodoTask'
 import TodoTaskList from "./TodoTaskList/TodoTaskList"
 import UpdateTodoForm from "./UpdateTodoForm"
+import Loading from "./Loading/Loading"
 
 export {
   Header,
@@ -16,5 +17,6 @@ export {
   Button,
   ReturnButton,
   TodoTask,
-  TodoTaskList
+  TodoTaskList,
+  Loading,
 }

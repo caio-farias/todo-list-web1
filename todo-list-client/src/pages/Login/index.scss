@@ -9,6 +9,17 @@
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+  .loading-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    span{
+      font-size: 16px;
+      margin-bottom: 1em;
+    }
+  }
   .login-user-form{
     display: flex;
     flex-direction: column;
@@ -23,7 +34,9 @@
         font-weight: bold;
       }
       .user-form-input{
-        padding: .3em;
+        margin-top: .5em;
+        font-size: 15px;
+        padding: .5em;
         border: 1px #2a2a2e3f solid;
         border-radius: 6px;
       }
