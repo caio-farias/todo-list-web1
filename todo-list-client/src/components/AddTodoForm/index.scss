@@ -1,0 +1,44 @@
+
+.add-todo-form{
+  padding: .5em;
+  min-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  #task-name-field,input{
+    margin-top: 1em;
+    min-width: 400px;
+    min-height: 70px;
+    font-size: 20px;
+    background: #2a2a2e !important;
+    border: none;
+    border-radius: 6px;
+    padding: 20px 20px;
+    color: white;
+  }
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 30px;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}

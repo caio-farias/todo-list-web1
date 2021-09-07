@@ -1,0 +1,65 @@
+@import '../../style-config/themes.scss';
+
+.button {
+  cursor: pointer;
+  &:hover{
+    opacity: .9;
+  }
+  &--login {
+    width: 100px;
+    background: $dark-green;
+    color: white;
+    border-radius: 10px;
+    border: 0;
+    padding: 0.75em 1.5em;
+    font-weight: 600;
+    margin-top: 1em;
+    cursor: pointer;
+    &:hover{
+      opacity: .9;
+    }
+  }
+  &--register {
+    align-self: center;
+    min-width: 50%;
+    background: $light-green-2;
+    color: white;
+    border-radius: 10px;
+    border: 0;
+    font-size: 14px;
+    padding: 0.7em 0.7em;
+    font-weight: 600;
+  }
+  &--dashboard {
+    color: $green;
+    border-color: $green;
+    background: white;
+  }
+  &--common {
+    color: white;
+    background: $green;
+    border-radius: 10px;
+    border: 0;
+    padding: 7px 25px;
+    font-weight: bold;
+  }
+  &--common-red {
+    color: white;
+    background: $red;
+    border-radius: 10px;
+    border: 0;
+    padding: 7px 25px;
+    font-weight: bold;
+  }
+  &--modal {
+    align-self: center;
+    width: 100px;
+    background: $light-green-2;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    border: 0;
+    padding: 0.7em 0.7em;
+    font-weight: 600;
+  }
+}

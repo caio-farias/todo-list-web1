@@ -1,0 +1,76 @@
+@import "../../style-config/themes.scss";
+
+.todo-task{
+  &__name{
+    font-size: 12px;
+    font-weight: 500;
+  }
+  &__date{
+    font-weight: 500;
+    font-size: 8px;
+  }
+  &-buttons-wrapper{
+    min-width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    button{
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      font-size: 16px;
+      color: white;
+      background: transparent;
+      border: none;
+      &:hover{
+        opacity: .3;
+      }
+    }
+  }
+  &--done{
+    min-width: 85%;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    padding: .5em;
+    border-radius: 6px;
+    &:hover{
+      cursor: grabbing;
+    }
+    background-color: $green;
+    opacity: .8;
+  }
+  &--working{
+    min-width: 85%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: .5em;
+    border-radius: 6px;
+    &:hover{
+      cursor: grabbing;
+    }
+    background-color: $blue;
+  }
+  &--pending{
+    min-width: 85%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: .5em;
+    border-radius: 6px;
+    &:hover{
+      cursor: grabbing;
+    }
+    background-color: $dark;
+  }
+  &--grabbing{
+    min-width: 85%;
+    min-height: 80px;
+    border: 1px darkblue dashed;
+    color: white;
+    padding: .5em;
+    border-radius: 6px;
+  }
+}

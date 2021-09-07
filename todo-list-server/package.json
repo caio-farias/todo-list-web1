@@ -5,8 +5,15 @@
   "repository": "https://github.com/caio-farias/todo-list-web1.git",
   "author": "Caio Farias <caio4095@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },
   "dependencies": {
-    "immer": "^9.0.6",
-    "moment": "^2.29.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
