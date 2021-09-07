@@ -1,31 +1,53 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useEffect } from "react"
+import { useHistory, useLocation } from "react-router"
+import { Button } from ".."
+import { removeAuthToken, isAuthenticated } from "../../utils"
 import './index.scss'
 
-const Header = () =>(
+const Header = () => {
+  const history = useHistory()
+  const location = useLocation()
+
+  const logout = () =>{
+    removeAuthToken()
+    history.push({
+      pathname: '/login'
+    })
+  }
+
+  useEffect(() => {
+  }, [location.pathname])
+  
+  return(
   <>
-    <nav class="container mainHeader">
-      <ul>
-        <li>
-          <Link to="/">Login</Link>
-        </li>
-        <li>
-          <Link to="/register">Register</Link>
-        </li>
-        <li>
-          <Link to="/app">App</Link>
-        </li>
-      </ul>
+    <nav className="container mainHeader">
+      <div className="container mainHeader">
+        <div className="header-wrapper">
+          <h3 className="mt-5">To-do list!</h3>
+          <span>Projeto de Desenvolvimento WEB I v2.0</span>
+            <div>
+              {isAuthenticated() ? 
+                <Button 
+                  onClick={()=> logout()} 
+                  modifier='login'
+                >
+                  Sair
+                </Button>
+              :(
+                <>
+                  {location.pathname !== '/login' ? 
+                    <a href='/login' className="">Logar</a>
+                    : 
+                    <a href='/register' className="">Cadastre-se</a>
+                  }
+                </>
+              )}
+            </div>
+        </div>
+      </div>
     </nav>
-    <nav class="">
-  <div class="container mainHeader">
-    <div class="header-wrapper">
-      <h3 class="mt-5">To-do list!</h3>
-      <span>Projeto de Desenvolvimento WEB I</span>
-    </div>
-  </div>
-</nav>
   </>
-)
+  )
+}
 
 export default Header

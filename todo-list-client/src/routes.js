@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 
 import { 
@@ -14,6 +15,7 @@ import {
   Register,
   TodoListDashboard
 } from './pages'
+import { isAuthenticated } from "./utils";
 
 export default function App() {
   return (
@@ -21,9 +23,12 @@ export default function App() {
       <Header />
       <>
         <Switch>
-          <Route exact from="/" to='/login' component={Login}/>
-          <Route path="/register" component={Register} />
-          <Route path="/app" component={TodoListDashboard} />
+            <Route path="/login" component={Login}/>
+            <Route exact path="/">
+              {isAuthenticated() ? <Redirect to="/app" /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/register" component={Register} />
+            <Route path="/app" component={TodoListDashboard}/>
         </Switch>
       </>
     </Router>
