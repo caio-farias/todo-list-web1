@@ -4,5 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/caio-farias/todo-list-web1.git",
   "author": "Caio Farias <caio4095@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "immer": "^9.0.6",
+    "moment": "^2.29.1"
+  }
 }

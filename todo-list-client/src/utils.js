@@ -1,0 +1,6 @@
+export const getAuthToken = () => localStorage.getItem('token')
+export const isAuthenticated = () => !!localStorage.getItem('token')
+export const setAuthToken = token => localStorage.setItem('token', token)
+export const removeAuthToken = () => localStorage.removeItem('token')
+export const getUserId = () => localStorage.getItem('user_id')
+export const setUserId = id => localStorage.setItem('user_id', id)

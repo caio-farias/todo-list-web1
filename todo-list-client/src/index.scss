@@ -4,7 +4,15 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;  
+  background-color: #eaeaea
+}
+
+.error-message{
+  animation: fade .25s;
+  margin-top: .1em;
+  color: red;
+  font-size: 13px;
 }
 
 code {

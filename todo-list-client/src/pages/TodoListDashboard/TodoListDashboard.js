@@ -1,27 +1,110 @@
-import React from "react"
+import React, { useEffect, useState, useCallback } from "react"
+import { TodoTaskPanel } from '../../components'
+import api from '../../api'
+import { getUserId } from "../../utils"
+import { produce } from 'immer'
+import TodoListDashboardContext from './context'
+import './index.scss'
 
 const TodoListDashboard = () => {
+  const [ user, setUser ] = useState({})
+  const [ todoList, setTodoList ] = useState(null)
+
+  const getUserData = async () =>{
+    const id = getUserId()
+    try {
+      const res = await api.get(`/users/${id}`)
+      return res.data
+    } catch (error) {
+      return null 
+    }
+  }
+
+const updateUserData = useCallback(
+  async (todoList) => {
+      try {
+        await api.put(`/users/todo-list/${getUserId()}`, {
+          todo_list: todoList
+        })
+      } catch (error) {
+      }
+    },
+  [],
+)
+
+  useEffect(() => {
+    const getUser = async() => {
+      let user = await getUserData()
+      if(!user)
+        return
+      setUser(user)
+      setTodoList(user.todo_list)
+    }
+    getUser()
+  }, [])
+
+
+  useEffect(() => {
+    const updateTodo = async () => {
+      if(todoList == null)
+        return
+      await updateUserData(todoList)
+    }
+    updateTodo()
+  }, [todoList, updateUserData])
+  
+
+  const updateTodoStatus = async (index, status) =>{
+    setTodoList(
+      produce(draft => {
+        const todo = draft[index]
+        todo.status = status
+      })
+    )
+  }
+
+  const createTodoOnPanel = newTodo => {
+    setTodoList(
+      produce(draft =>{
+          draft.push(newTodo)
+        }
+      ))
+  }
+
+  const updateTodoOnPanel = async (index, newTask) => {
+    setTodoList(
+      produce(draft =>{
+        draft[index].task = newTask
+        })
+    )
+  }
+
+  const deleteTodoOnPanel = async (index) =>{
+    setTodoList(
+      produce(draft =>{
+        draft.splice(index, 1)
+      }
+    ))
+  }
+
   return(
-    <>
-    <section class="mainPanel px-3">
-      <div>
-          <div class="ml-5 d-flex">
-            <button class="btn btn-primary open-modal-button">Adicionar tarefa</button>
-          </div>
-          <hr class="h-line" />
-          <div class="ml-5 score-panel">
-            <span class="task-number">
-              À fazer :
-              <span class="ml-2" id="number-todo-tasks"></span>
-            </span>
-            <span class="task-number">
-              Concluídas:
-              <span class="ml-2" id="number-done-tasks"></span>
-            </span>
+    <section className="dashboard">
+      <section className="mainPanel">
+        <span>Olá, {user != null && user.name}</span>
+        <div>
+          <TodoListDashboardContext.Provider 
+            value={{ 
+              todoList, 
+              createTodoOnPanel,
+              updateTodoOnPanel,
+              updateTodoStatus,
+              deleteTodoOnPanel
+            }}>
+            <TodoTaskPanel />
+          </TodoListDashboardContext.Provider>
         </div>
-      </div>
+      </section>
     </section>
-    </>
   )
 }
 

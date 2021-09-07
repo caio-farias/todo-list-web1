@@ -7,7 +7,7 @@ const PORT = 8000
 
 app.use(corsMiddleware)
 app.options('*', corsMiddleware)
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 app.use((req, res, next) =>{
   console.log(`>> ${req.method} - ${req.protocol}://${req.get('host')}${req.originalUrl}`)
   next()

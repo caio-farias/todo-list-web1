@@ -2,7 +2,7 @@ const User = require('./User')
 
 module.exports = {
   async createUser(req, res) {
-    const { name, password, email } = req.body
+    const { name, email, password } = req.body
 
     try {
       const isSameUser = await User.findOne({ email })
@@ -11,10 +11,10 @@ module.exports = {
       }
       const user = await User.create({ 
         name,
-        password, 
         email,
+        password, 
       })
-      delete user['dataValues'].password
+      user.password = undefined
       return res.json(user)
     } catch (error) {
       console.log(error)
@@ -27,6 +27,7 @@ module.exports = {
       const user = await User.findById(id)
       if(!user)
         return res.status(400).json({ message: "Usuário inexistente" })
+        
       user.password = undefined
       return res.json(user)
     } catch (error) {
@@ -54,7 +55,9 @@ module.exports = {
       if(!user){
         return res.status(400).json({ message: "Usuário não existe." })
       }
-      
+      user.todo_list = todo_list
+      await user.save()
+      user.password = undefined
       return res.json(user)
     } catch (error) {
       return res.status(400).json({ message: "Ocorreu um erro, tente novamente." })
